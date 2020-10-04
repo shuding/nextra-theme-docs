@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import slugify from '@sindresorhus/slugify'
 import 'focus-visible'
+import { SkipNavContent } from '@reach/skip-nav'
 
 import flatten from './utils/flatten'
 import reorderBasedOnMeta from './utils/reorder'
@@ -251,6 +252,7 @@ const Layout = ({ filename, config: _config, pageMap, children }) => {
           <MenuContext.Provider value={{ setMenu }}>
             <Sidebar show={menu} anchors={anchors} directories={directories} />
           </MenuContext.Provider>
+          <SkipNavContent />
           <content className="relative pt-20 pb-16 px-6 md:px-8 w-full max-w-full overflow-x-hidden">
             <main className="max-w-screen-md">
               <Theme>{children}</Theme>
