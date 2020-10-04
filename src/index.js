@@ -165,7 +165,7 @@ const PrevLink = ({ config, flatDirectories, currentIndex }) => {
   )
 }
 
-const Layout = ({ filename, config: _config, pageMap, children }) => {
+const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
   const [menu, setMenu] = useState(false)
   const router = useRouter()
   const { route, pathname } = router
@@ -181,7 +181,7 @@ const Layout = ({ filename, config: _config, pageMap, children }) => {
   )
   const titleEl =
     titles.find((child) => child.props.mdxType === 'h1')
-  const title = titleEl ? titleEl.props.children : 'Untitled'
+  const title = meta.title || (titleEl ? titleEl.props.children : 'Untitled')
   const anchors = titles
     .filter((child) => child.props.mdxType === 'h2')
     .map((child) => child.props.children)
@@ -253,34 +253,40 @@ const Layout = ({ filename, config: _config, pageMap, children }) => {
             <Sidebar show={menu} anchors={anchors} directories={directories} />
           </MenuContext.Provider>
           <SkipNavContent />
-          <content className="relative pt-20 pb-16 px-6 md:px-8 w-full max-w-full overflow-x-hidden xl:pr-6">
-            <main className="max-w-screen-md mx-auto">
-              <Theme>{children}</Theme>
-              <footer className="mt-24">
-                <nav className="flex flex-row items-center justify-between">
-                  <div>
-                    <PrevLink config={config} flatDirectories={flatDirectories} currentIndex={currentIndex} />
-                  </div>
+          {meta.full ? (
+            <content className="relative pt-16 w-full overflow-x-hidden">
+              {children}
+            </content>
+          ) : (
+            <content className="relative pt-20 pb-16 px-6 md:px-8 w-full max-w-full overflow-x-hidden xl:pr-64">
+              <main className="max-w-screen-md mx-auto">
+                <Theme>{children}</Theme>
+                <footer className="mt-24">
+                  <nav className="flex flex-row items-center justify-between">
+                    <div>
+                      <PrevLink config={config} flatDirectories={flatDirectories} currentIndex={currentIndex} />
+                    </div>
 
-                  <div>
-                    <NextLink config={config} flatDirectories={flatDirectories} currentIndex={currentIndex} />
-                  </div>
-                </nav>
+                    <div>
+                      <NextLink config={config} flatDirectories={flatDirectories} currentIndex={currentIndex} />
+                    </div>
+                  </nav>
 
-                <hr />
+                  <hr />
 
-                {config.footer ? <div className="mt-24 flex justify-between flex-col-reverse md:flex-row items-center md:items-end">
-                  <span className="text-gray-600">
-                    {config.footerText}
-                  </span>
-                  <div className="mt-6"/>
-                  {config.footerEditOnGitHubLink ? <a className="text-sm" href={
-                    config.github + '/tree/master/pages' + filepathWithName
-                  } target="_blank">Edit this page on GitHub</a> : null}
-                </div> : null}
-              </footer>
-            </main>
-          </content>
+                  {config.footer ? <div className="mt-24 flex justify-between flex-col-reverse md:flex-row items-center md:items-end">
+                    <span className="text-gray-600">
+                      {config.footerText}
+                    </span>
+                    <div className="mt-6"/>
+                    {config.footerEditOnGitHubLink ? <a className="text-sm" href={
+                      config.github + '/tree/master/pages' + filepathWithName
+                    } target="_blank">Edit this page on GitHub</a> : null}
+                  </div> : null}
+                </footer>
+              </main>
+            </content>
+          )}
         </div>
       </div>
     </React.Fragment>
