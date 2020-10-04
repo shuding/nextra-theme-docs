@@ -216,7 +216,7 @@ const Layout = ({ filename, config: _config, pageMap, children }) => {
             </Link>
           </div>
 
-          {config.search && <Search directories={flatDirectories} />}
+          {config.customSearch || (config.search ? <Search directories={flatDirectories} /> : null)}
 
           {config.github ? (
             <a
