@@ -1,5 +1,6 @@
 import { MDXProvider } from '@mdx-js/react'
 import slugify from '@sindresorhus/slugify'
+import ReactDOMServer from 'react-dom/server'
 import Link from 'next/link'
 import React from 'react'
 import Highlight, { defaultProps } from 'prism-react-renderer'
@@ -73,7 +74,7 @@ const THEME = {
 // Anchor links
 
 const HeaderLink = ({ tag: Tag, children, ...props }) => {
-  const slug = slugify(children || '')
+  const slug = slugify(ReactDOMServer.renderToStaticMarkup(children) || '')
   return (
     <Tag {...props}>
       <span className="subheading-anchor" id={slug} />
