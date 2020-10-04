@@ -11,7 +11,7 @@ export default function reorderBasedOnMeta (list) {
   const metaKeys = Object.keys(meta)
 
   return list.filter(a => {
-    return a.name !== 'meta.json' && a.name !== '_app'
+    return a.name !== 'meta.json' && !a.name.startsWith('_')
   }).sort((a, b) => {
     return metaKeys.indexOf(a.name) - metaKeys.indexOf(b.name)
   }).map(a => {
