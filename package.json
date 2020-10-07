@@ -1,6 +1,6 @@
 {
   "name": "nextra-theme-docs",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "A Nextra theme for documentation sites.",
   "main": "index.js",
   "repository": "https://github.com/shuding/nextra-theme-docs.git",
@@ -15,8 +15,8 @@
   "scripts": {
     "build": "yarn run build:clean && yarn run build:tailwind && yarn run build:layout",
     "build:clean": "rm -rf dist",
-    "build:tailwind": "tailwindcss build src/styles.css -o style.css -c tailwind.config.js",
-    "build:layout": "microbundle src/*.js -f cjs -o dist --no-sourcemap --jsx React.createElement --target node"
+    "build:tailwind": "NODE_ENV=production tailwindcss build src/styles.css -o style.css -c tailwind.config.js",
+    "build:layout": "NODE_ENV=production microbundle src/*.js -f cjs -o dist --no-sourcemap --jsx React.createElement --target node"
   },
   "dependencies": {
     "@mdx-js/react": "^1.6.16",
