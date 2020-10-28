@@ -202,6 +202,7 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
   return (
     <React.Fragment>
       <Head>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <title>
           {title}
           {config.titleSuffix || ''}

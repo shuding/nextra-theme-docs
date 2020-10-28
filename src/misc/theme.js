@@ -34,7 +34,7 @@ const THEME = {
     {
       types: ['variable', 'language-javascript'],
       style: {
-        color: '#c6c5fe',
+        color: '#0076ff',
       },
     },
     {
