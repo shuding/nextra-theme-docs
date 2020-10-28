@@ -52,7 +52,7 @@ p code {
   @apply text-sm;
 }
 pre code {
-  @apply p-0 text-sm text-black bg-transparent rounded-none;
+  @apply p-0 text-sm text-black bg-transparent rounded-none inline-block min-w-full;
 }
 a code {
   @apply text-current no-underline;
