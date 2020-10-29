@@ -282,7 +282,7 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
                     </span>
                     <div className="mt-6"/>
                     {config.footerEditOnGitHubLink ? <a className="text-sm" href={
-                      (config.siteGithub || config.github) + '/tree/master/pages' + filepathWithName
+                      (config.siteGithub || config.github) + '/edit/master/pages' + filepathWithName
                     } target="_blank">Edit this page on GitHub</a> : null}
                   </div> : null}
                 </footer>
