@@ -40,7 +40,7 @@ h6 {
   @apply text-base font-semibold tracking-tight mt-8;
 }
 a {
-  @apply text-blue-500 underline transition-colors duration-200;
+  @apply text-blue-500 underline;
 }
 p {
   @apply mt-6 leading-7;
