@@ -6,6 +6,7 @@ export default {
   nextLinks: true,
   prevLinks: true,
   search: true,
+  darkMode: true,
   footer: true,
   footerText: 'MIT 2020 © Shu Ding.',
   footerEditOnGitHubLink: true,

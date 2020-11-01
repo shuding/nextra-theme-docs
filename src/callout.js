@@ -1,14 +1,9 @@
 import React from 'react'
 
 // https://www.notion.so/Callout-blocks-5b2638247b54447eb2e21145f97194b0
-export default ({ children, background = 'bg-orange-100', emoji = '💡' }) => {
-  return <p className={`${background} flex rounded-lg`}>
+export default ({ children, background = 'bg-orange-100 dark:text-gray-800', emoji = '💡' }) => {
+  return <p className={`${background} flex rounded-lg callout`}>
     <span className="pl-3 pr-2 py-2 select-none text-xl">{emoji}</span>
-    <span className="pr-4 py-2">{children}</span>
-    <style jsx>{`
-      span > :global(p) {
-        margin-top: 0;
-      }
-    `}</style>
+    <span className="pr-4 py-2 -mt-6">{children}</span>
   </p>
 }

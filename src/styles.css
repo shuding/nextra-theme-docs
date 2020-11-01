@@ -11,15 +11,21 @@ html {
   font-feature-settings: 'rlig' 1, 'calt' 1, 'ss01' 1;
 }
 body {
-  @apply bg-white;
+  @apply bg-white transition-colors duration-200;
+}
+.dark body {
+  @apply bg-dark text-gray-100;
 }
 
 h1 {
   @apply text-4xl font-bold tracking-tight;
 }
 h2 {
-  @apply text-3xl font-semibold tracking-tight mt-10;
+  @apply text-3xl font-semibold tracking-tight mt-10 transition-colors duration-200;
   @apply border-b;
+}
+.dark h2 {
+  @apply border-gray-800;
 }
 h3 {
   @apply text-2xl font-semibold tracking-tight mt-8;
@@ -34,16 +40,22 @@ h6 {
   @apply text-base font-semibold tracking-tight mt-8;
 }
 a {
-  @apply text-blue-600 underline;
+  @apply text-blue-500 underline transition-colors duration-200;
 }
 p {
   @apply mt-6 leading-7;
 }
 hr {
-  @apply my-8;
+  @apply my-8 transition-colors duration-200;
+}
+.dark hr {
+  @apply border-gray-800;
 }
 code {
-  @apply p-1 text-gray-800 bg-gray-500 bg-opacity-25 rounded;
+  @apply p-1 text-gray-800 bg-gray-500 bg-opacity-25 rounded transition-colors duration-200;
+}
+.dark code {
+  @apply text-gray-300 bg-gray-800;
 }
 pre {
   @apply p-4 bg-gray-200 rounded-lg mt-6 mb-4 overflow-x-auto scrolling-touch;
@@ -53,6 +65,9 @@ p code {
 }
 pre code {
   @apply p-0 text-sm text-black bg-transparent rounded-none inline-block min-w-full;
+}
+.dark pre code {
+  @apply bg-gray-200 text-gray-800;
 }
 a code {
   @apply text-current no-underline;
@@ -92,17 +107,25 @@ figure figcaption {
   @apply shadow-outline;
 }
 .sidebar li.active > a {
-  @apply font-semibold text-black bg-gray-200;
+  @apply font-semibold text-black bg-gray-200 transition-colors duration-200;
+}
+.dark .sidebar li.active > a {
+  @apply text-white bg-gray-800;
 }
 .sidebar button, .sidebar a {
-  @apply block w-full text-left text-base text-black no-underline text-gray-600 mt-1 p-2 rounded select-none outline-none;
+  @apply block w-full text-left text-base no-underline text-gray-600 mt-1 p-2 rounded select-none outline-none transition-colors duration-200;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+}
+.dark .sidebar button, .dark .sidebar a {
+  @apply text-gray-500;
 }
 .sidebar a:hover, .sidebar button:hover {
   @apply text-gray-900 bg-gray-100;
 }
-
+.dark .sidebar a:hover, .dark .sidebar button:hover {
+  @apply text-white bg-gray-900;
+}
 content ul {
   @apply list-disc ml-6 mt-6;
 }
@@ -122,6 +145,9 @@ content li {
 .anchor-icon {
   opacity: 0;
   @apply ml-2 text-gray-500;
+}
+.dark .anchor-icon {
+  @apply text-gray-700;
 }
 
 h2 a {

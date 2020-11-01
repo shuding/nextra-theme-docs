@@ -6,6 +6,7 @@ import Link from 'next/link'
 import slugify from '@sindresorhus/slugify'
 import 'focus-visible'
 import { SkipNavContent } from '@reach/skip-nav'
+import { ThemeProvider } from 'next-themes'
 
 import flatten from './utils/flatten'
 import reorderBasedOnMeta from './utils/reorder'
@@ -13,6 +14,7 @@ import reorderBasedOnMeta from './utils/reorder'
 import Search from './search'
 import GitHubIcon from './github-icon'
 import ArrowRight from './arrow-right'
+import ThemeSwitch from './theme-switch'
 
 import Theme from './misc/theme'
 import defaultConfig from './misc/default.config'
@@ -117,7 +119,7 @@ function Menu({ dir, anchors }) {
 function Sidebar({ show, directories, anchors }) {
   return (
     <aside
-      className={`h-screen bg-white flex-shrink-0 w-full md:w-64 md:border-r md:block fixed md:sticky z-10 ${
+      className={`h-screen bg-white dark:bg-dark flex-shrink-0 w-full md:w-64 md:border-r dark:border-gray-800 md:block fixed md:sticky z-10 transition-colors duration-200 ${
         show ? '' : 'hidden'
       }`}
       style={{
@@ -210,7 +212,7 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
         {config.head || null}
       </Head>
       <div className="main-container flex flex-col">
-        <nav className="flex items-center bg-white z-20 fixed top-0 left-0 right-0 h-16 border-b px-6">
+        <nav className="flex items-center bg-white z-20 fixed top-0 left-0 right-0 h-16 border-b px-6 dark:bg-dark dark:border-gray-800 transition-colors duration-200">
           <div className="hidden md:block w-full flex items-center">
             <Link href="/">
               <a className="no-underline text-current inline-flex items-center hover:opacity-75">
@@ -221,6 +223,8 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
 
           {config.customSearch || (config.search ? <Search directories={flatDirectories} /> : null)}
 
+          {config.darkMode ? <ThemeSwitch /> : null}
+
           {config.github ? (
             <a
               className="text-current p-2 -mr-2"
@@ -230,6 +234,7 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
               <GitHubIcon height={28} />
             </a>
           ) : null}
+
           <button
             className="block md:hidden p-2 -mr-2 ml-2"
             onClick={() => setMenu(!menu)}
@@ -295,4 +300,7 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
   )
 }
 
-export default (opts, config) => props => <Layout config={config} {...opts} {...props}/>
+export default (opts, config) => props => 
+  <ThemeProvider attribute="class">
+    <Layout config={config} {...opts} {...props}/>
+  </ThemeProvider>

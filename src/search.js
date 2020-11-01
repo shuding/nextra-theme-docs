@@ -105,7 +105,7 @@ const Search = ({ directories }) => {
           setSearch(e.target.value)
           setShow(true)
         }}
-        className="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+        className="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full dark:bg-dark dark:border-gray-700"
         type="search"
         placeholder='Search ("/" to focus)'
         onKeyDown={handleKeyDown}

@@ -15,6 +15,15 @@ module.exports = {
     },
     letterSpacing: {
       tight: '-0.015em'
+    },
+    extend: {
+      colors: {
+        dark: '#111'
+      }
     }
-  }
+  },
+  experimental: {
+    darkModeVariant: true
+  },
+  dark: 'class'
 }
