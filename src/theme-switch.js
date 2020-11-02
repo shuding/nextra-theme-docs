@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes'
 
 export default function ThemeSwitch () {
   const { theme, setTheme } = useTheme()
-  return <a className="text-current p-2 -mr-2 cursor-pointer" onClick={() => {
+  return <a className="text-current p-2 cursor-pointer" onClick={() => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }}>{
     theme === 'dark' ? 
