@@ -48,7 +48,7 @@ function Folder({ item, anchors }) {
       </button>
       <div
         style={{
-          display: open ? '' : 'none',
+          display: open ? undefined : 'none',
         }}
       >
         <Menu dir={item.children} base={item.route} anchors={anchors} />
