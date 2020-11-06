@@ -60,7 +60,7 @@ code {
 pre {
   @apply p-4 bg-gray-200 rounded-lg mt-6 mb-4 overflow-x-auto scrolling-touch;
 }
-p code {
+code {
   @apply text-sm;
 }
 pre code {
@@ -131,6 +131,9 @@ content ul {
 }
 content li {
   @apply mt-2;
+}
+content ol {
+  @apply list-decimal;
 }
 .subheading-anchor {
   margin-top: -84px;
