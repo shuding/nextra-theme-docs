@@ -1,7 +1,3 @@
-# nextra-theme-docs
+Made https://github.com/shuding/nextra/tree/core a monorepo.
 
-A documentation site theme for [Nextra](https://github.com/shuding/nextra).
-
-## Example
-
-[nextra.vercel.app](https://nextra.vercel.app/)
+This repository is now archived.
